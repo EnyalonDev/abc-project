@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grupo ABC Propiedad Horizontal - Sitio Web Corporativo
 
-## Getting Started
+Este es el repositorio del sitio web oficial de **Grupo ABC Propiedad Horizontal SAS BIC**, una solución moderna y profesional para la administración de copropiedades en Colombia.
 
-First, run the development server:
+## 🚀 Tecnologías Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework:** [Next.js 14/15](https://nextjs.org/) (App Router)
+- **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animaciones:** [Framer Motion](https://www.framer.com/motion/)
+- **Iconos:** [Lucide React](https://lucide.dev/)
+- **Base de Datos/Auth:** [Supabase](https://supabase.com/)
+- **Lenguaje:** TypeScript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Configuración y Desarrollo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerrequisitos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js (v18 o superior)
+- npm o yarn
 
-## Learn More
+### Instalación
 
-To learn more about Next.js, take a look at the following resources:
+1. Clonar el repositorio:
+   ```bash
+   git clone [url-del-repositorio]
+   cd abc-project
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Instalar dependencias:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Configurar variables de entorno:
+   Crea un archivo `.env.local` en la raíz del proyecto con tus credenciales de Supabase:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=tu_url_de_supabase
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key_de_supabase
+   ```
 
-## Deploy on Vercel
+4. Iniciar el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El sitio estará disponible en [http://localhost:3000](http://localhost:3000).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Estructura del Proyecto
+
+- `src/app/`: Rutas y páginas de la aplicación.
+- `src/components/`: Componentes reutilizables (UI, Layout, etc.).
+- `src/lib/`: Utilidades y configuración de clientes (Supabase, Fetchers).
+- `public/`: Assets estáticos (Logo, Favicons, Imágenes).
+- `docs/`: Documentación técnica y recursos comerciales originales.
+
+## ✨ Características Principales
+
+- **Diseño Responsive:** Optimizado para móviles, tablets y escritorio.
+- **Animaciones Suaves:** Transiciones y efectos de revelado con Framer Motion.
+- **Panel Administrativo:** Interfaz para la gestión futura de servicios y circulares.
+- **SEO Ready:** Títulos, descripciones y metadatos optimizados.
+- **Identidad Corporativa:** Paleta de colores `#1a508f` y tipografía profesional.
+
+## 📄 Licencia
+
+Este proyecto es propiedad privada de Grupo ABC Propiedad Horizontal SAS BIC.
