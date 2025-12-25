@@ -114,3 +114,72 @@ export async function deleteHighlightAction(id: string, table: string) {
         return { success: false, error: error.message };
     }
 }
+
+// Contact Messages Actions
+export async function deleteContactMessageAction(id: string) {
+    await verifyAdmin();
+
+    try {
+        const { error } = await supabaseAdmin.from('contact_messages').delete().eq('id', id);
+        if (error) throw error;
+
+        revalidatePath('/admin/messages');
+        return { success: true };
+    } catch (error: any) {
+        console.error('deleteContactMessageAction error:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+export async function toggleMessageReadAction(id: string, currentReadStatus: boolean) {
+    await verifyAdmin();
+
+    try {
+        const { error } = await supabaseAdmin
+            .from('contact_messages')
+            .update({ is_read: !currentReadStatus })
+            .eq('id', id);
+
+        if (error) throw error;
+
+        revalidatePath('/admin/messages');
+        return { success: true };
+    } catch (error: any) {
+        console.error('toggleMessageReadAction error:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+export async function getContactMessagesAction(page: number = 1, pageSize: number = 10) {
+    await verifyAdmin();
+
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize - 1;
+
+    try {
+        const [{ data, error, count }, { count: unreadCount }] = await Promise.all([
+            supabaseAdmin
+                .from('contact_messages')
+                .select('*', { count: 'exact' })
+                .order('created_at', { ascending: false })
+                .range(from, to),
+            supabaseAdmin
+                .from('contact_messages')
+                .select('*', { count: 'exact', head: true })
+                .eq('is_read', false)
+        ]);
+
+        if (error) throw error;
+
+        return {
+            success: true,
+            data,
+            count: count || 0,
+            unreadCount: unreadCount || 0,
+            totalPages: Math.ceil((count || 0) / pageSize)
+        };
+    } catch (error: any) {
+        console.error('getContactMessagesAction error:', error);
+        return { success: false, error: error.message };
+    }
+}

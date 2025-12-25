@@ -4,14 +4,14 @@ import { Settings, Briefcase, Star, MessageSquare, Activity } from 'lucide-react
 export default function AdminDashboard() {
     return (
         <div className="max-w-6xl mx-auto">
-            <h1 className="text-2xl font-bold text-gray-900 mb-8">Panel de Control - Grupo ABC PH</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-8">Panel de Control</h1>
 
             {/* Quick Access Grid */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-12">
                 {[
+                    { name: 'Configuración General del Sitio', href: '/admin/settings', icon: Settings, color: 'bg-gray-700', count: 'Ajustes globales' },
+                    { name: 'Tarjetas', href: '/admin/highlights', icon: Star, color: 'bg-yellow-500', count: 'Gestión de tarjetas' },
                     { name: 'Servicios', href: '/admin/services', icon: Briefcase, color: 'bg-blue-500', count: 'Editar catálogo' },
-                    { name: 'Contenido Inicio', href: '/admin/highlights', icon: Star, color: 'bg-yellow-500', count: 'Gestión de tarjetas' },
-                    { name: 'Redes y Contacto', href: '/admin/settings', icon: Settings, color: 'bg-gray-700', count: 'Ajustes globales' },
                     { name: 'Mensajes', href: '#', icon: MessageSquare, color: 'bg-green-500', count: 'Próximamente' },
                 ].map((item) => (
                     <Link key={item.name} href={item.href} className="group bg-white overflow-hidden shadow-sm rounded-xl border border-gray-100 hover:shadow-md transition-all p-6">

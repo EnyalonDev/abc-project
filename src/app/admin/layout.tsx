@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, FileText, Settings, LogOut, Briefcase, Star, Loader2 } from 'lucide-react';
+import { LayoutDashboard, FileText, Settings, LogOut, Briefcase, Star, Loader2, Mail } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { checkSession, logoutAction } from './login/actions';
 
@@ -77,7 +77,7 @@ export default function AdminLayout({
             {/* Sidebar */}
             <div className="hidden md:flex w-64 flex-col bg-gray-900 text-white">
                 <div className="flex h-16 items-center justify-center bg-gray-800 font-bold text-xl">
-                    ABC PH Admin
+                    <br></br>Admin ABC
                 </div>
                 <nav className="flex-1 px-4 py-6 space-y-2">
                     <Link href="/admin/dashboard" className={`flex items-center px-4 py-2 rounded transition gap-3 ${pathname === '/admin/dashboard' ? 'bg-primary text-white' : 'hover:bg-gray-800'}`}>
@@ -90,14 +90,15 @@ export default function AdminLayout({
                         <Briefcase size={20} /> Servicios
                     </Link>
                     <Link href="/admin/highlights" className={`flex items-center px-4 py-2 rounded transition gap-3 ${pathname === '/admin/highlights' ? 'bg-primary text-white' : 'hover:bg-gray-800'}`}>
-                        <Star size={20} /> Propuestas Valor
+                        <Star size={20} /> Tarjetas
                     </Link>
-                </nav>
-                <div className="p-4 border-t border-gray-800">
+                    <Link href="/admin/messages" className={`flex items-center px-4 py-2 rounded transition gap-3 ${pathname === '/admin/messages' ? 'bg-primary text-white' : 'hover:bg-gray-800'}`}>
+                        <Mail size={20} /> Mensajes
+                    </Link>
                     <button onClick={handleLogout} className="w-full flex items-center px-4 py-2 hover:bg-red-900 rounded transition gap-3 text-red-300">
                         <LogOut size={20} /> Cerrar Sesión
                     </button>
-                </div>
+                </nav>
             </div>
 
             {/* Main Content */}

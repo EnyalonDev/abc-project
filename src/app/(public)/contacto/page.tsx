@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { FadeIn } from '@/components/ui/motion';
 import { supabase } from '@/lib/supabase';
+import ContactForm from './ContactForm';
 
 async function getContactSettings() {
     const { data } = await supabase
@@ -46,7 +47,7 @@ export default async function ContactPage() {
                                 <dt className="flex-none"><Phone className="w-6 h-6 text-primary" /></dt>
                                 <dd>
                                     <a href={`tel:${phone1.replace(/\s/g, '')}`} className="hover:text-primary">{phone1}</a> <br />
-                                    <a href={`tel:${phone2.replace(/\s/g, '')}`} className="hover:text-primary">{phone2}</a>
+                                    {phone2 && <a href={`tel:${phone2.replace(/\s/g, '')}`} className="hover:text-primary">{phone2}</a>}
                                 </dd>
                             </div>
                             <div className="flex gap-4">
@@ -65,31 +66,7 @@ export default async function ContactPage() {
 
                     {/* Form */}
                     <FadeIn direction="left" delay={0.4}>
-                        <form action="#" method="POST" className="bg-gray-50 p-8 rounded-2xl shadow-sm">
-                            <div className="space-y-6">
-                                <div>
-                                    <label htmlFor="name" className="block text-sm font-semibold leading-6 text-gray-900">Nombre Completo</label>
-                                    <div className="mt-2.5">
-                                        <input type="text" name="name" id="name" autoComplete="name" className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 px-3" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">Correo Electrónico</label>
-                                    <div className="mt-2.5">
-                                        <input type="email" name="email" id="email" autoComplete="email" className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 px-3" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">Mensaje</label>
-                                    <div className="mt-2.5">
-                                        <textarea name="message" id="message" rows={4} className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 px-3"></textarea>
-                                    </div>
-                                </div>
-                                <button type="submit" className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-                                    Enviar Mensaje
-                                </button>
-                            </div>
-                        </form>
+                        <ContactForm />
                     </FadeIn>
                 </div>
             </div>

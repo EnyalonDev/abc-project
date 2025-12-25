@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "Grupo ABC Propiedad Horizontal",
   description: "Administración integral de propiedad horizontal en Colombia. Transparencia, eficiencia y compromiso social.",
+  authors: [{ name: "Néstor Ovallos Cañas", url: "https://nestorovallos.com" }],
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
