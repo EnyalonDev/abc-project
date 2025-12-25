@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Inter } from 'next/font/google';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "Grupo ABC Propiedad Horizontal",
@@ -35,11 +38,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="overflow-x-hidden">
-      <body className="flex flex-col min-h-screen overflow-x-hidden">
+      <body className={`${inter.className} flex flex-col min-h-screen overflow-x-hidden`}>
         <Navbar />
-        <main className="flex-grow pt-[100px] sm:pt-[60px]"> {/* Add padding for fixed header */}
+        {/* Padding top to account for the fixed header (140px on desktop, ~100px on mobile) */}
+        <div className="flex-grow pt-[100px] sm:pt-[140px]">
           {children}
-        </main>
+        </div>
         <Footer />
       </body>
     </html>
